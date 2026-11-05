@@ -1,20 +1,5 @@
 jmp main
 
-;========Variáveis do Jogo==========
-
-fase: var #1
-tamanho_seq: var #1
-indice: var #1
-semente: var #1
-resposta_certa: var #1
-; Cada valor da sequencia representa uma cor:
-; 1 = verde
-; 2 = vermelho
-; 3 = azul
-; 4 = amarelo
-
-sequencia: var #17 ;vão existir 15 fases
-
 ;===========Tela Amarela============
 
 inicial_start : var #1200
@@ -7590,6 +7575,23 @@ g_neutro : var #1200
   static g_neutro + #1197, #3967
   static g_neutro + #1198, #3967
   static g_neutro + #1199, #3967
+
+
+;========Variáveis do Jogo==========
+
+fase: var #1
+tamanho_seq: var #1
+indice: var #1
+semente: var #1
+resposta_certa: var #1
+; Cada valor da sequencia representa uma cor:
+; 1 = verde
+; 2 = vermelho
+; 3 = azul
+; 4 = amarelo
+
+sequencia: var #17 ;vão existir 15 fases
+
 
 ;--------------Inicio Programa Main------
 main:
