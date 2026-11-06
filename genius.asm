@@ -15337,59 +15337,68 @@ verificar_resposta:
 
 
 resultado_acerto:
-    loadn r1, #576
+    ;tela de acerto
+	call printtrue1Screen
+	call delay 
+	call printtrue2Screen
+	call delay
+	call printtrue3Screen
+	call delay
+	call printtrue4Screen
+	call delay
+	call printtrue5Screen
 
-    loadn r0, #'A'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'C'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'E'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'R'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'T'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'O'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'U'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'!'
-    outchar r0, r1
+	push r2
+	push r3
+	push r4
 
-    jmp fim_verificacao
+    le_resposta1:
+		loadn r3, #13
+		loadn r4, #115
 
+		inchar r2
+		cmp r2, r3
+			jeq fim_verificacao
+
+		cmp r2, r4
+			jeq sair
+			jne maiusculo1
+
+		maiusculo1:
+			loadn r4, #83
+			cmp r2, r4
+				jeq sair
+				jne le_resposta1
 
 resultado_erro:
-    loadn r1, #577
+    ; tela de erro
+	call printfalseScreen
 
-    loadn r0, #'E'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'R'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'R'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'O'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'U'
-    outchar r0, r1
-    inc r1
-    loadn r0, #'!'
+	push r2
+	push r3
+	
+	le_resposta2:
+		loadn r3, #115
+		inchar r2
 
-    outchar r0, r1
+		cmp r2, r3
+			jeq sair
+			jne maiusculo2
+
+		maiusculo2:
+			loadn r3, #83
+			cmp r2, r3
+				jeq sair
+				jne le_resposta2
+
+sair:
+	halt
 
 fim_verificacao:
-    pop r1
+	pop r4
+	pop r3
+	pop r2
+	pop r1
     pop r0
     rts
 
