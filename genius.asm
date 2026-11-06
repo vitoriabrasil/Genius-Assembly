@@ -15201,10 +15201,6 @@ roda_fase:
     ; Informa se acertou ou errou
     call verificar_resposta
 
-    ; A continuacao do jogo sera implementada
-    ; pela colega, utilizando resposta_certa.
-
-    halt
 
 nova_fase:
 	load r0, fase
