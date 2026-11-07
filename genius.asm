@@ -15211,7 +15211,7 @@ nova_fase:
     cmp r7, r0 ;ve se ja foram as 15 fases
     jne roda_fase
  
- halt	
+ call sair	
 	
 ;---------------Subrotinas---------------
 
@@ -15388,7 +15388,44 @@ resultado_erro:
 				jne le_resposta2
 
 sair:
-	halt
+  push r1
+  push r2
+  push r3
+  push r4
+  push r6
+  push r7
+
+  loadn r3, #10
+  loadn r6, #13
+
+  div r1, r5, r3
+  mod r2, r5, r3
+
+  loadn r3, #'0'
+
+  add r1, r1, r3
+  add r2, r2, r3
+
+  loadn r3, #540
+  loadn r7, #541
+
+  call printpontuacaoScreen
+  outchar r1, r3
+  outchar r2, r7
+
+  le_resposta3:
+
+    inchar r4
+    cmp r4, r6
+      jne le_resposta3
+    
+    pop r7
+    pop r6
+    pop r4
+    pop r3
+    pop r2
+    pop r1
+    halt
 
 fim_verificacao:
 	pop r4
