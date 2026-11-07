@@ -15841,23 +15841,23 @@ pontuacao : var #1200
   static pontuacao + #650, #127
   static pontuacao + #651, #127
   static pontuacao + #652, #127
-  static pontuacao + #653, #127
-  static pontuacao + #654, #127
-  static pontuacao + #655, #127
+  static pontuacao + #653, #1
+  static pontuacao + #654, #1
+  static pontuacao + #655, #1
   static pontuacao + #656, #127
   static pontuacao + #657, #127
-  static pontuacao + #658, #127
-  static pontuacao + #659, #127
-  static pontuacao + #660, #127
-  static pontuacao + #661, #127
+  static pontuacao + #658, #2163
+  static pontuacao + #659, #2145
+  static pontuacao + #660, #2153
+  static pontuacao + #661, #2162
   static pontuacao + #662, #127
-  static pontuacao + #663, #127
-  static pontuacao + #664, #127
-  static pontuacao + #665, #127
-  static pontuacao + #666, #127
-  static pontuacao + #667, #127
-  static pontuacao + #668, #127
-  static pontuacao + #669, #127
+  static pontuacao + #663, #2139
+  static pontuacao + #664, #2149
+  static pontuacao + #665, #2158
+  static pontuacao + #666, #2164
+  static pontuacao + #667, #2149
+  static pontuacao + #668, #2162
+  static pontuacao + #669, #2141
   static pontuacao + #670, #127
   static pontuacao + #671, #127
   static pontuacao + #672, #127
@@ -16415,6 +16415,7 @@ pontuacao : var #1200
   static pontuacao + #1198, #127
   static pontuacao + #1199, #127
 
+
 ;========Variáveis do Jogo==========
 
 fase: var #1
@@ -16649,7 +16650,44 @@ resultado_erro:
 				jne le_resposta2
 
 sair:
-	halt
+  push r1
+  push r2
+  push r3
+  push r4
+  push r6
+  push r7
+
+  loadn r3, #10
+  loadn r6, #13
+
+  div r1, r5, r3
+  mod r2, r5, r3
+
+  loadn r3, #'0'
+
+  add r1, r1, r3
+  add r2, r2, r3
+
+  loadn r3, #540
+  loadn r7, #541
+
+  call printpontuacaoScreen
+  outchar r1, r3
+  outchar r2, r7
+
+  le_resposta3:
+
+    inchar r4
+    cmp r4, r6
+      jne le_resposta3
+    
+    pop r7
+    pop r6
+    pop r4
+    pop r3
+    pop r2
+    pop r1
+    halt
 
 fim_verificacao:
 	pop r4
@@ -17151,6 +17189,7 @@ printpontuacaoScreen:
   pop R1
   pop R0
   rts
+
 
  ApagaTela:
 	push r0
