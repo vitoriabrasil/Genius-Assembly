@@ -16439,6 +16439,8 @@ main:
     loadn r1, #4
     store semente, r1
 
+	loadn r5, #0
+
     call print_TelaInicial
 
 aperta_space:
@@ -16594,6 +16596,9 @@ verificar_resposta:
 
 
 resultado_acerto:
+
+	inc r5
+
     ;tela de acerto
 	call printtrue1Screen
 	call delay 
